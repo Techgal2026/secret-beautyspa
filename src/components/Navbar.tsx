@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
+import Link from 'next/link';
 import {
   Search,
   Menu,
@@ -106,24 +108,26 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
           }}
         >
           {/* Logo */}
-          <div style={styles.logoContainer}>
-            <Image
-              src="/logoss.jpeg"
-              alt="Secret Beauty & Spa"
-              width={48}
-              height={48}
-              style={styles.logoImage}
-              priority
-            />
-            <div style={styles.logoTextContainer}>
-              <span className="logo-brand-text" style={styles.logoBrand}>
-                Secret Beauty & Spa
-              </span>
-              <span className="logo-subtext-text" style={styles.logoSubtext}>
-                DU SOIN AU BESOIN
-              </span>
-            </div>
-          </div>
+          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <div style={styles.logoContainer}>
+    <Image
+      src="/logoss.jpeg"
+      alt="Secret Beauty & Spa"
+      width={48}
+      height={48}
+      style={styles.logoImage}
+      priority
+    />
+    <div style={styles.logoTextContainer}>
+      <span className="logo-brand-text" style={styles.logoBrand}>
+        Secret Beauty & Spa
+      </span>
+      <span className="logo-subtext-text" style={styles.logoSubtext}>
+        DU SOIN AU BESOIN
+      </span>
+    </div>
+  </div>
+</Link>
 
           {/* Navigation Desktop */}
           <ul className="nav-desktop-list" style={styles.navList}>
@@ -148,17 +152,7 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
 
           {/* Boutons d'action */}
           <div style={styles.iconGroup}>
-            <a
-              href={`tel:${phoneNumber}`}
-              className="phone-button-custom"
-              style={styles.phoneButton}
-              aria-label="Appeler Secret Beauty & Spa"
-            >
-              <Phone size={15} color="#2A2421" />
-              <span className="phone-text-desktop" style={styles.phoneText}>
-                {displayPhone}
-              </span>
-            </a>
+            
 
             {/* Bouton Réserver bureau */}
             <button
@@ -170,9 +164,7 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
               <span className="btn-reserve-text">RÉSERVER</span>
             </button>
 
-            <button style={styles.iconButton} aria-label="Rechercher">
-              <Search size={19} strokeWidth={1.8} color="#2A2421" />
-            </button>
+          
 
             <button
               className="mobile-toggle-btn"

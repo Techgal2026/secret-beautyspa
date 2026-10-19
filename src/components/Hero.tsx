@@ -5,7 +5,6 @@ import React from "react";
 const Hero: React.FC = () => {
   const heroBackgroundImage = "/hero.png";
   const phoneNumber = "776913230";
-  const displayPhone = "+221 77 691 32 30";
 
   return (
     <>
@@ -34,7 +33,7 @@ const Hero: React.FC = () => {
           z-index: 1;
         }
 
-        /* Overlay très léger pour assurer la lisibilité du texte clair */
+        /* Overlay léger pour assurer la lisibilité */
         .hero-overlay {
           position: absolute;
           top: 0;
@@ -43,14 +42,14 @@ const Hero: React.FC = () => {
           height: 100%;
           background: linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.5) 0%,
-            rgba(0, 0, 0, 0.2) 60%,
-            rgba(0, 0, 0, 0) 100%
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0.1) 100%
           );
           z-index: 2;
         }
 
-        /* Conteneur du contenu textuel (Sans cadre) */
+        /* Conteneur du contenu textuel */
         .hero-content-wrapper {
           position: relative;
           z-index: 3;
@@ -64,7 +63,7 @@ const Hero: React.FC = () => {
           align-items: flex-start;
         }
 
-        /* Conteneur de texte simple */
+        /* Conteneur de texte */
         .hero-text-block {
           max-width: 550px;
           color: #ffffff;
@@ -93,29 +92,6 @@ const Hero: React.FC = () => {
           letter-spacing: -0.5px;
           font-family: system-ui, -apple-system, sans-serif;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Informations (Localisation & Contact) */
-        .hero-info-block {
-          margin-bottom: 32px;
-        }
-
-        .hero-info-text {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.9);
-          margin: 0;
-          font-family: system-ui, -apple-system, sans-serif;
-          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-info-link {
-          color: #ffffff;
-          font-weight: 600;
-          text-decoration: underline;
-        }
-
-        .hero-info-link:hover {
-          color: #e2baa9;
         }
 
         /* Bouton de réservation */
@@ -150,6 +126,9 @@ const Hero: React.FC = () => {
 
         /* Responsive Media Queries */
         @media (max-width: 1024px) {
+          .hero-container {
+            min-height: 75vh; /* Hauteur réduite pour tablettes */
+          }
           .hero-content-wrapper {
             padding: 0 40px;
           }
@@ -159,26 +138,33 @@ const Hero: React.FC = () => {
         }
 
         @media (max-width: 768px) {
+          .hero-container {
+            min-height: 60vh; /* Hauteur réduite pour mobiles */
+          }
           .hero-content-wrapper {
             padding: 0 24px;
           }
           .hero-title {
-            font-size: 34px;
+            font-size: 32px;
             margin-bottom: 20px;
           }
           .hero-button {
             width: 100%;
             justify-content: space-between;
+            padding: 14px 20px;
           }
         }
 
         @media (max-width: 480px) {
+          .hero-container {
+            min-height: 55vh; /* Ajustement fin pour petits écrans */
+          }
           .hero-title {
-            font-size: 28px;
+            font-size: 26px;
           }
           .hero-subtitle {
             font-size: 11px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
           }
         }
       `}</style>
@@ -194,24 +180,12 @@ const Hero: React.FC = () => {
         {/* Voile sombre léger pour la lisibilité */}
         <div className="hero-overlay" />
 
-        {/* Contenu textuel sans cadre */}
+        {/* Contenu textuel */}
         <div className="hero-content-wrapper">
           <div className="hero-text-block">
             <span className="hero-subtitle">Secret Beauty &amp; Spa</span>
 
             <h1 className="hero-title">Révélez votre beauté naturelle.</h1>
-
-            <div className="hero-info-block">
-              <p className="hero-info-text">
-                Dakar, Sénégal •{" "}
-                <a
-                  href={`tel:+221${phoneNumber}`}
-                  className="hero-info-link"
-                >
-                  {displayPhone}
-                </a>
-              </p>
-            </div>
 
             <a
               href={`https://wa.me/221${phoneNumber}`}

@@ -19,7 +19,7 @@ const ServicesSection: React.FC = () => {
       link: "https://wa.me/221776913230",
     },
     {
-      image: "/c1.jpg",
+      image: "/c5.jpg",
       title: "Regard & Maquillage",
       description:
         "Sublimez vos yeux avec l'extension de cils, le rehaussement et le microblading, ou profitez de nos prestations maquillage à domicile.",
