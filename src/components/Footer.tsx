@@ -3,262 +3,499 @@
 import React from "react";
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   const footerLinks = [
-    { name: "À Propos", href: "#" },
-    { name: "Nos Prestations", href: "#" },
-    { name: "Tarifs", href: "#" },
-    { name: "Avis Clients", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "À propos", href: "#about" },
+    { name: "Nos prestations", href: "#services" },
+    { name: "Nos tarifs", href: "#tarifs" },
+    { name: "Avis clients", href: "#avis" },
+    { name: "Contact", href: "#contact" },
   ];
+
+  const whatsappLink =
+    "https://wa.me/221776913230?text=" +
+    encodeURIComponent(
+      "Bonjour Secret Beauty & Spa, je souhaite obtenir des informations sur vos prestations."
+    );
 
   const socialLinks = [
     {
       label: "Facebook",
-      href: "#",
+      href: "https://www.facebook.com/",
       icon: (
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-        </svg>
-      ),
-    },
-    {
-      label: "Twitter",
-      href: "#",
-      icon: (
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12Z" />
         </svg>
       ),
     },
     {
       label: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/",
       icon: (
-        <svg
-          width="18"
-          height="18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          viewBox="0 0 24 24"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-        </svg>
-      ),
-    },
-    {
-      label: "Youtube",
-      href: "#",
-      icon: (
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.8" r="1" fill="currentColor" stroke="none" />
         </svg>
       ),
     },
   ];
 
-  const bgImage = "/footer.png";
-
   return (
-    <footer
-      className="footer-section"
-      style={{
-        ...styles.footer,
-        backgroundImage: `url(${bgImage})`,
-      }}
-    >
-      <style>{`
-        /* Media Queries pour le Responsive */
-        @media (max-width: 900px) {
-          .footer-top-row {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 25px !important;
+    <footer className="footer-section">
+      <div className="footer-overlay" />
+
+      <div className="footer-container">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <a href="/" className="footer-logo" aria-label="Secret Beauty & Spa, accueil">
+              Secret Beauty
+              <span>& Spa</span>
+            </a>
+
+            <div className="footer-tagline">
+              L&apos;art de prendre soin de soi.
+            </div>
+
+            <p className="footer-description">
+              Offrez à votre corps et à votre esprit un moment de détente,
+              de beauté et de bien-être dans un cadre pensé pour vous.
+            </p>
+
+            <a
+              className="footer-whatsapp"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.34.15 11.92c0 2.1.55 4.15 1.6 5.96L.05 24l6.28-1.65a11.9 11.9 0 0 0 5.74 1.46h.01C18.66 23.81 24 18.47 24 11.9c0-3.18-1.24-6.17-3.48-8.42ZM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.87 9.87 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.02 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.93 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.02-1.05 2.49s1.08 2.88 1.23 3.08c.15.2 2.13 3.25 5.16 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z" />
+              </svg>
+              <span>Prendre rendez-vous</span>
+            </a>
+          </div>
+
+          <div className="footer-column">
+            <h3>Navigation</h3>
+            <nav className="footer-nav" aria-label="Navigation de pied de page">
+              {footerLinks.map((link) => (
+                <a key={link.name} href={link.href}>
+                  <span className="footer-link-arrow">↗</span>
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div className="footer-column footer-contact">
+            <h3>Restons en contact</h3>
+
+            <a href="tel:+221776913230" className="footer-contact-item">
+              <span className="footer-contact-icon">☎</span>
+              <span>
+                <small>Téléphone / WhatsApp</small>
+                +221 77 691 32 30
+              </span>
+            </a>
+
+            <a
+              href="mailto:secretbeautyspa136@gmail.com"
+              className="footer-contact-item"
+            >
+              <span className="footer-contact-icon">✉</span>
+              <span>
+                <small>Adresse e-mail</small>
+                secretbeautyspa136@gmail.com
+              </span>
+            </a>
+
+            <div className="footer-socials">
+              <span className="footer-social-label">Suivez-nous</span>
+              <div className="footer-social-list">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    title={social.label}
+                    className="footer-social-icon"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-divider" />
+
+        <div className="footer-bottom">
+          <p>
+            © {currentYear} <strong>Secret Beauty & Spa</strong>. Tous droits
+            réservés.
+          </p>
+
+          <div className="footer-legal">
+            <a href="/politique-confidentialite">
+              Politique de confidentialité
+            </a>
+          </div>
+
+          <a href="#top" className="footer-back-top">
+            Retour en haut ↑
+          </a>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .footer-section {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+          width: 100%;
+          padding: 76px 24px 24px;
+          box-sizing: border-box;
+          color: #fffaf6;
+          background-color: #211815;
+          background-image: url("/footer.png");
+          background-position: center;
+          background-size: cover;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .footer-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          background: linear-gradient(
+            110deg,
+            rgba(28, 19, 16, 0.97),
+            rgba(40, 27, 22, 0.92) 55%,
+            rgba(28, 19, 16, 0.96)
+          );
+        }
+
+        .footer-container {
+          position: relative;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .footer-main {
+          display: grid;
+          grid-template-columns: 1.4fr 0.75fr 1fr;
+          gap: 64px;
+          padding-bottom: 54px;
+        }
+
+        .footer-brand {
+          max-width: 390px;
+        }
+
+        .footer-logo {
+          display: inline-block;
+          color: #fffaf6;
+          font-family: var(--font-playfair), Georgia, serif;
+          font-size: clamp(28px, 3vw, 36px);
+          font-weight: 400;
+          letter-spacing: -0.8px;
+          line-height: 1.2;
+          text-decoration: none;
+        }
+
+        .footer-logo span {
+          display: block;
+          margin-top: 3px;
+          color: #c8a18e;
+          font-size: 0.72em;
+          font-style: italic;
+          letter-spacing: 2px;
+        }
+
+        .footer-tagline {
+          margin-top: 22px;
+          color: #d8b9a8;
+          font-family: var(--font-playfair), Georgia, serif;
+          font-size: 18px;
+          font-style: italic;
+        }
+
+        .footer-description {
+          margin: 15px 0 25px;
+          max-width: 350px;
+          color: rgba(255, 250, 246, 0.7);
+          font-size: 14px;
+          line-height: 1.9;
+        }
+
+        .footer-whatsapp {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          min-height: 46px;
+          padding: 0 20px;
+          border: 1px solid #b88e7d;
+          border-radius: 3px;
+          background: #b88e7d;
+          color: #241814;
+          font-size: 13px;
+          font-weight: 600;
+          text-decoration: none;
+          transition:
+            background 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .footer-whatsapp svg {
+          width: 19px;
+          height: 19px;
+          flex-shrink: 0;
+        }
+
+        .footer-whatsapp:hover {
+          transform: translateY(-2px);
+          background: transparent;
+          color: #f0d5c6;
+        }
+
+        .footer-column h3 {
+          margin: 7px 0 25px;
+          color: #e3c3b1;
+          font-family: var(--font-playfair), Georgia, serif;
+          font-size: 20px;
+          font-weight: 400;
+        }
+
+        .footer-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 17px;
+        }
+
+        .footer-nav a {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          width: fit-content;
+          color: rgba(255, 250, 246, 0.76);
+          font-size: 14px;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .footer-link-arrow {
+          color: #b88e7d;
+          font-size: 13px;
+          transition: transform 0.2s ease;
+        }
+
+        .footer-nav a:hover,
+        .footer-legal a:hover,
+        .footer-back-top:hover {
+          color: #e5bfa9;
+        }
+
+        .footer-nav a:hover .footer-link-arrow {
+          transform: translate(2px, -2px);
+        }
+
+        .footer-contact {
+          min-width: 0;
+        }
+
+        .footer-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          margin-bottom: 20px;
+          color: #fffaf6;
+          font-size: 13px;
+          text-decoration: none;
+          overflow-wrap: anywhere;
+        }
+
+        .footer-contact-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 39px;
+          height: 39px;
+          flex-shrink: 0;
+          border: 1px solid rgba(200, 161, 142, 0.4);
+          border-radius: 50%;
+          color: #d5ad99;
+          font-size: 17px;
+        }
+
+        .footer-contact-item small {
+          display: block;
+          margin-bottom: 6px;
+          color: rgba(255, 250, 246, 0.55);
+          font-size: 11px;
+        }
+
+        .footer-socials {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 15px;
+          margin-top: 25px;
+        }
+
+        .footer-social-label {
+          color: rgba(255, 250, 246, 0.7);
+          font-size: 12px;
+        }
+
+        .footer-social-list {
+          display: flex;
+          gap: 10px;
+        }
+
+        .footer-social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border: 1px solid rgba(255, 250, 246, 0.22);
+          border-radius: 50%;
+          color: #fffaf6;
+          transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease;
+        }
+
+        .footer-social-icon svg {
+          width: 17px;
+          height: 17px;
+          stroke: currentColor;
+          stroke-width: 1.7;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        .footer-social-icon:hover {
+          border-color: #c8a18e;
+          background: #c8a18e;
+          color: #241814;
+        }
+
+        .footer-divider {
+          height: 1px;
+          background: rgba(255, 250, 246, 0.15);
+        }
+
+        .footer-bottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
+          padding-top: 23px;
+          color: rgba(255, 250, 246, 0.57);
+          font-size: 12px;
+        }
+
+        .footer-bottom p {
+          margin: 0;
+          line-height: 1.7;
+        }
+
+        .footer-bottom strong {
+          color: rgba(255, 250, 246, 0.85);
+          font-weight: 500;
+        }
+
+        .footer-legal a,
+        .footer-back-top {
+          color: rgba(255, 250, 246, 0.65);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .footer-back-top {
+          white-space: nowrap;
+        }
+
+        @media (max-width: 950px) {
+          .footer-main {
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 45px 55px;
           }
-          .footer-nav-links {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 20px !important;
+
+          .footer-contact {
+            grid-column: 1 / -1;
+          }
+
+          .footer-bottom {
+            flex-wrap: wrap;
           }
         }
 
         @media (max-width: 600px) {
           .footer-section {
-            padding: 40px 15px 25px 15px !important;
+            padding: 48px 20px 22px;
           }
-          .footer-nav-links {
-            flex-direction: column !important;
-            gap: 15px !important;
+
+          .footer-main {
+            grid-template-columns: 1fr;
+            gap: 38px;
+            padding-bottom: 35px;
           }
-          .footer-bottom-row {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 15px !important;
+
+          .footer-brand {
+            max-width: 100%;
           }
-          .footer-legal-links {
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 10px !important;
+
+          .footer-description {
+            max-width: 100%;
+          }
+
+          .footer-column h3 {
+            margin-bottom: 19px;
+          }
+
+          .footer-nav {
+            gap: 15px;
+          }
+
+          .footer-contact {
+            grid-column: auto;
+          }
+
+          .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            padding-top: 20px;
+          }
+
+          .footer-legal {
+            order: 2;
+          }
+
+          .footer-back-top {
+            order: 3;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .footer-section *,
+          .footer-section *::before,
+          .footer-section *::after {
+            transition: none !important;
           }
         }
       `}</style>
-
-      <div style={styles.overlay} />
-
-      <div style={styles.container}>
-        <div className="footer-top-row" style={styles.topRow}>
-          <div style={styles.logo}>
-            Secret Beauty <span style={styles.logoSub}>& Spa</span>
-          </div>
-
-          <nav className="footer-nav-links" style={styles.navLinks}>
-            {footerLinks.map((link, index) => (
-              <a key={index} href={link.href} style={styles.navLink}>
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
-          <div style={styles.socialGroup}>
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                aria-label={social.label}
-                style={styles.socialIcon}
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div style={styles.divider} />
-
-        <div className="footer-bottom-row" style={styles.bottomRow}>
-          <div style={styles.copyright}>
-            © {new Date().getFullYear()} Secret Beauty & Spa. Tous droits
-            réservés.
-          </div>
-
-          <div className="footer-legal-links" style={styles.legalLinks}>
-            <a href="#" style={styles.legalLink}>
-              Conditions Générales
-            </a>
-            <a href="#" style={styles.legalLink}>
-              Politique de Confidentialité
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
   );
-};
-
-const styles: { [key: string]: React.CSSProperties } = {
-  footer: {
-    position: "relative",
-    width: "100%",
-    backgroundColor: "#1A1513",
-    backgroundSize: "cover",
-    backgroundPosition: "center left",
-    color: "#ffffff",
-    padding: "60px 20px 30px 20px",
-    boxSizing: "border-box",
-    fontFamily: "sans-serif",
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(26, 21, 19, 0.85)",
-    zIndex: 1,
-  },
-  container: {
-    position: "relative",
-    zIndex: 2,
-    maxWidth: "1200px",
-    margin: "0 auto",
-  },
-  topRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "40px",
-    flexWrap: "wrap",
-    gap: "20px",
-  },
-  logo: {
-    fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-    fontSize: "28px",
-    color: "#ffffff",
-    fontWeight: "normal",
-    letterSpacing: "0.5px",
-  },
-  logoSub: {
-    color: "#B88E7D",
-  },
-  navLinks: {
-    display: "flex",
-    gap: "30px",
-    alignItems: "center",
-  },
-  navLink: {
-    color: "#ffffff",
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: "400",
-    transition: "color 0.2s ease",
-  },
-  socialGroup: {
-    display: "flex",
-    gap: "20px",
-    alignItems: "center",
-  },
-  socialIcon: {
-    color: "#ffffff",
-    opacity: 0.85,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textDecoration: "none",
-    transition: "opacity 0.2s ease, color 0.2s ease",
-  },
-  divider: {
-    height: "1px",
-    backgroundColor: "rgba(255, 255, 255, 0.12)",
-    marginBottom: "25px",
-  },
-  bottomRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontSize: "12px",
-    color: "rgba(255, 255, 255, 0.6)",
-    flexWrap: "wrap",
-    gap: "15px",
-  },
-  copyright: {
-    fontSize: "12px",
-    color: "rgba(255, 255, 255, 0.7)",
-  },
-  legalLinks: {
-    display: "flex",
-    gap: "20px",
-  },
-  legalLink: {
-    color: "rgba(255, 255, 255, 0.7)",
-    textDecoration: "none",
-    fontSize: "12px",
-  },
 };
 
 export default Footer;

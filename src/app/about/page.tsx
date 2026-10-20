@@ -87,7 +87,7 @@ export default function AboutPage() {
           {/* COLONNE GAUCHE : PHOTOS */}
           <div className={`about-left-column animate-fade-up delay-1 ${isVisible ? "visible" : ""}`} style={styles.leftColumn}>
             <div className="main-image-wrapper" style={styles.mainImageWrapper}>
-              <img src="/ab.jpg" alt="Cadre apaisant de l'institut" style={styles.mainImage} loading="lazy" />
+              <img src="/abb.jpg" alt="Cadre apaisant de l'institut" style={styles.mainImage} loading="lazy" />
             </div>
             <div className="overlay-image-card" style={styles.overlayImageCard}>
               <img src="/ab2.jpeg" alt="Détails des soins Secret Beauty" style={styles.overlayImage} loading="lazy" />
