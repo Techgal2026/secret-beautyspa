@@ -3,9 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
-  Heart,
-  Sparkles,
-  Flower2,
+  Clock,
 } from "lucide-react";
 
 const About: React.FC = () => {
@@ -31,24 +29,6 @@ const About: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const values = [
-    {
-      icon: Sparkles,
-      title: "Soins sur-mesure",
-      text: "Des rituels et des produits adaptés aux besoins uniques de votre peau.",
-    },
-    {
-      icon: Heart,
-      title: "Praticiennes expert(e)s",
-      text: "Une équipe attentive dédiée à votre confort et votre sérénité.",
-    },
-    {
-      icon: Flower2,
-      title: "Un havre de paix",
-      text: "Un cadre élégant, intime et apaisant au cœur de Dakar.",
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
@@ -60,7 +40,7 @@ const About: React.FC = () => {
           position: relative;
           overflow: hidden;
           padding: 105px 24px;
-          background: #F8F5F0;
+          background: #ead5ca;
           color: #40342F;
           font-family: Arial, Helvetica, sans-serif;
         }
@@ -78,12 +58,14 @@ const About: React.FC = () => {
           gap: 90px;
         }
 
-        /* PHOTOS ET VISUELS */
+        /* PHOTOS ET VISUELS EN CHEVAUCHEMENT */
 
         .about-visual {
           position: relative;
-          min-width: 0;
-          padding: 0 32px 45px 0;
+          width: 100%;
+          max-width: 500px;
+          aspect-ratio: 1 / 1;
+          margin: 0 auto;
           opacity: 0;
           transform: translateY(28px);
           transition: opacity .8s ease, transform .8s ease;
@@ -94,18 +76,35 @@ const About: React.FC = () => {
           transform: translateY(0);
         }
 
-        /* 1. Photo Principale : Ambiance & Décor du Spa */
-        .about-main-image {
-          position: relative;
-          height: 590px;
+        /* Image 1 : Arrière-plan (Haut Gauche) - HAUTEUR AUGMENTÉE À 85% */
+        .about-image-back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 70%;
+          height: 85%; /* Augmenté de 70% à 85% pour plus de hauteur */
           overflow: hidden;
-          border-radius: 180px 180px 8px 8px;
-          background: #E7DDD2;
-          box-shadow: 0 20px 40px rgba(48, 32, 25, 0.08);
+          box-shadow: 0 15px 35px rgba(64, 52, 47, 0.08);
+          border-radius: 4px;
+          z-index: 1;
         }
 
-        .about-main-image img,
-        .about-small-image img {
+        /* Image 2 : Avant-plan (Bas Droite - Chevauchement) */
+        .about-image-front {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 70%;
+          height: 70%;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(64, 52, 47, 0.15);
+          border-radius: 4px;
+          border: 6px solid #ead5ca;
+          z-index: 2;
+        }
+
+        .about-image-back img,
+        .about-image-front img {
           width: 100%;
           height: 100%;
           display: block;
@@ -113,51 +112,9 @@ const About: React.FC = () => {
           transition: transform .7s ease;
         }
 
-        .about-main-image:hover img,
-        .about-small-image:hover img {
-          transform: scale(1.04);
-        }
-
-        /* 2. Photo Secondaire : Soin & Expertise en action */
-        .about-small-image {
-          position: absolute;
-          width: 52%;
-          height: 230px;
-          bottom: 0;
-          right: 0;
-          padding: 8px;
-          background: #F8F5F0;
-          border-radius: 8px;
-          overflow: hidden;
-          z-index: 2;
-          box-shadow: 0 12px 30px rgba(48, 32, 25, 0.12);
-        }
-
-        .about-small-image img {
-          border-radius: 5px;
-        }
-
-        .about-photo-caption {
-          position: absolute;
-          top: 32px;
-          left: -25px;
-          z-index: 3;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 13px 17px;
-          background: #FFFFFF;
-          color: #54433D;
-          border-radius: 4px;
-          box-shadow: 0 8px 28px rgba(64, 52, 47, .12);
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-        }
-
-        .about-photo-caption svg {
-          color: #B69A79;
+        .about-image-back:hover img,
+        .about-image-front:hover img {
+          transform: scale(1.05);
         }
 
         /* CONTENU TEXTE */
@@ -179,7 +136,7 @@ const About: React.FC = () => {
           align-items: center;
           gap: 12px;
           margin-bottom: 22px;
-          color: #9A7B61;
+          color: #7A5C4D;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 3px;
@@ -190,7 +147,7 @@ const About: React.FC = () => {
           content: "";
           width: 35px;
           height: 1px;
-          background: #B69A79;
+          background: #7A5C4D;
         }
 
         .about-heading {
@@ -198,91 +155,53 @@ const About: React.FC = () => {
           max-width: 520px;
           color: #40342F;
           font-family: "Playfair Display", Georgia, serif;
-          font-size: clamp(38px, 4vw, 54px);
+          font-size: clamp(36px, 4vw, 50px);
           font-weight: 400;
-          line-height: 1.16;
-          letter-spacing: -1.5px;
+          line-height: 1.18;
+          letter-spacing: -1px;
         }
 
-        .about-heading em {
-          color: #A17F65;
-          font-weight: 400;
+        .about-subheading {
+          margin: 18px 0 20px;
+          color: #634C40;
+          font-family: "Playfair Display", Georgia, serif;
+          font-size: 20px;
           font-style: italic;
-        }
-
-        .about-decoration {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin: 25px 0;
-          color: #B69A79;
-        }
-
-        .about-decoration span {
-          width: 43px;
-          height: 1px;
-          background: #D9C8B6;
+          font-weight: 400;
         }
 
         .about-description {
-          margin: 0 0 18px;
-          color: #766A62;
+          margin: 0 0 30px;
+          color: #5D4D45;
           font-size: 14px;
-          line-height: 2;
+          line-height: 1.9;
         }
 
-        .about-quote {
-          margin: 27px 0 30px;
-          padding: 2px 0 2px 20px;
-          border-left: 2px solid #B69A79;
-          color: #5D4A40;
-          font-family: "Playfair Display", Georgia, serif;
-          font-size: 18px;
-          font-style: italic;
-          line-height: 1.8;
-        }
+        /* HORAIRES D'OUVERTURE */
 
-        /* VALEURS */
-
-        .about-values {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 20px;
-          margin: 30px 0 35px;
-        }
-
-        .about-value {
+        .about-schedule {
           display: flex;
-          align-items: flex-start;
-          gap: 14px;
+          flex-direction: column;
+          gap: 12px;
+          margin-bottom: 35px;
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.65);
+          border-left: 3px solid #7A5C4D;
+          border-radius: 4px;
+          box-shadow: 0 4px 15px rgba(64, 52, 47, 0.04);
         }
 
-        .about-value-icon {
+        .about-schedule-item {
           display: flex;
-          flex-shrink: 0;
           align-items: center;
-          justify-content: center;
-          width: 38px;
-          height: 38px;
-          border: 1px solid #E1D4C6;
-          border-radius: 50%;
-          color: #9A7B61;
-          background: #FFFFFF;
-        }
-
-        .about-value-title {
-          margin: 1px 0 4px;
-          color: #493A33;
-          font-family: "Playfair Display", Georgia, serif;
-          font-size: 16px;
+          gap: 10px;
+          color: #40342F;
+          font-size: 13px;
           font-weight: 600;
         }
 
-        .about-value-text {
-          margin: 0;
-          color: #82756C;
-          font-size: 13px;
-          line-height: 1.7;
+        .about-schedule-item svg {
+          color: #7A5C4D;
         }
 
         /* BOUTON D'ACTION */
@@ -294,9 +213,9 @@ const About: React.FC = () => {
           gap: 15px;
           min-height: 53px;
           padding: 0 28px;
-          border: 1px solid #54433D;
+          border: 1px solid #40342F;
           border-radius: 40px;
-          background: #54433D;
+          background: #40342F;
           color: #FFFFFF;
           font-size: 11px;
           font-weight: 700;
@@ -309,7 +228,7 @@ const About: React.FC = () => {
 
         .about-cta:hover {
           background: transparent;
-          color: #54433D;
+          color: #40342F;
           transform: translateY(-2px);
         }
 
@@ -321,14 +240,7 @@ const About: React.FC = () => {
           transform: translateX(4px);
         }
 
-        .about-note {
-          margin-top: 15px;
-          color: #95867C;
-          font-size: 11px;
-          letter-spacing: 0.5px;
-        }
-
-        /* TABLETTES */
+        /* TABLETTES ET MOBILES */
 
         @media (max-width: 950px) {
           .about-section {
@@ -336,23 +248,13 @@ const About: React.FC = () => {
           }
 
           .about-container {
-            gap: 48px;
-          }
-
-          .about-main-image {
-            height: 500px;
-          }
-
-          .about-small-image {
-            height: 180px;
+            gap: 55px;
           }
 
           .about-heading {
-            font-size: 42px;
+            font-size: 40px;
           }
         }
-
-        /* MOBILES */
 
         @media (max-width: 680px) {
           .about-section {
@@ -365,44 +267,12 @@ const About: React.FC = () => {
           }
 
           .about-visual {
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 0 20px 35px 0;
-          }
-
-          .about-main-image {
-            height: 440px;
-            border-radius: 140px 140px 8px 8px;
-          }
-
-          .about-small-image {
-            width: 55%;
-            height: 160px;
-            right: 0;
-            bottom: 0;
-          }
-
-          .about-photo-caption {
-            top: 25px;
-            left: -8px;
-            padding: 10px 14px;
-            font-size: 9px;
-            letter-spacing: 1px;
+            max-width: 360px;
           }
 
           .about-heading {
             max-width: 440px;
-            font-size: clamp(34px, 8vw, 42px);
-            letter-spacing: -1px;
-          }
-
-          .about-description {
-            font-size: 13px;
-          }
-
-          .about-quote {
-            font-size: 16px;
+            font-size: clamp(32px, 8vw, 40px);
           }
 
           .about-cta {
@@ -411,34 +281,11 @@ const About: React.FC = () => {
           }
         }
 
-        @media (max-width: 380px) {
-          .about-section {
-            padding: 50px 17px;
-          }
-
-          .about-main-image {
-            height: 360px;
-          }
-
-          .about-small-image {
-            height: 135px;
-          }
-
-          .about-heading {
-            font-size: 32px;
-          }
-
-          .about-photo-caption {
-            left: -5px;
-            font-size: 8px;
-          }
-        }
-
         @media (prefers-reduced-motion: reduce) {
           .about-visual,
           .about-content,
-          .about-main-image img,
-          .about-small-image img,
+          .about-image-back img,
+          .about-image-front img,
           .about-cta,
           .about-cta svg {
             opacity: 1;
@@ -449,105 +296,62 @@ const About: React.FC = () => {
       `}</style>
 
       <div className="about-container">
-        {/* COLONNE PHOTOS (CADRE + EXPERTISE) */}
+        {/* COLONNE VISUELLE : CHEVAUCHEMENT DES IMAGES */}
         <div className="about-visual">
-          {/* Photo principale : Ambiance et Décor */}
-          <div className="about-main-image">
+          <div className="about-image-back">
             <img
-              src="/abb.jpg"
-              alt="Cadre chaleureux et apaisant - Secret Beauty & Spa Dakar"
+              src="/about.jpeg"
+              alt="Décor et accessoires de spa - Secret Beauty & Spa"
               loading="lazy"
             />
           </div>
 
-          {/* Badge élégant */}
-          <div className="about-photo-caption">
-            <Flower2 size={16} />
-            <span>Sérénité &amp; Élégance</span>
-          </div>
-
-          {/* Photo secondaire : Soin personnalisé */}
-          <div className="about-small-image">
+          <div className="about-image-front">
             <img
-              src="/ab4.jpg"
-              alt="Soin personnalisé et massage de bien-être"
+              src="/about2.jpeg"
+              alt="Soin du visage et bien-être - Secret Beauty & Spa"
               loading="lazy"
             />
           </div>
         </div>
 
-        {/* COLONNE PRÉSENTATION & TEXTE */}
+        {/* COLONNE TEXTE EN FRANÇAIS */}
         <div className="about-content">
           <div className="about-eyebrow">
-            L'esprit Secret Beauty &amp; Spa
+            Bienvenue chez Secret Beauty &amp; Spa
           </div>
 
           <h2 className="about-heading">
-            Révélez votre beauté,
-            <br />
-            <em>cultivez votre bien-être.</em>
+            Découvrez l'esprit d'harmonie
           </h2>
 
-          <div className="about-decoration" aria-hidden="true">
-            <span />
-            <Flower2 size={20} />
-            <span />
-          </div>
-
-          <p className="about-description">
-            Niché au cœur de Dakar, <strong>Secret Beauty &amp; Spa</strong> est bien
-            plus qu'un institut : c'est un havre de sérénité pensé pour vous offrir
-            une parenthèse hors du temps. 
+          <p className="about-subheading">
+            Une expérience unique dédiée à votre bien-être et au soin de votre beauté au quotidien.
           </p>
 
-          <blockquote className="about-quote">
-            « Accordez-vous une pause, retrouvez votre équilibre
-            et laissez votre beauté s'épanouir en toute confiance. »
-          </blockquote>
-
           <p className="about-description">
-            Que ce soit pour un soin du visage revitalisant, un massage relaxant
-            ou une prestation esthétique minutieuse, nous combinons savoir-faire
-            professionnel et produits de qualité pour sublimer votre bien-être au quotidien.
+            Laissez-vous voyager à travers un univers de sérénité où chaque rituel est pensé pour revitaliser votre corps et apaiser votre esprit.
           </p>
 
-          <div className="about-values">
-            {values.map((value) => {
-              const Icon = value.icon;
-
-              return (
-                <div className="about-value" key={value.title}>
-                  <div className="about-value-icon">
-                    <Icon size={18} strokeWidth={1.6} />
-                  </div>
-
-                  <div>
-                    <h3 className="about-value-title">
-                      {value.title}
-                    </h3>
-
-                    <p className="about-value-text">
-                      {value.text}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+          {/* PLAGES HORAIRES */}
+          <div className="about-schedule">
+            <div className="about-schedule-item">
+              <Clock size={16} />
+              <span>Lun - Ven : 09h00 – 22h00</span>
+            </div>
+            <div className="about-schedule-item">
+              <Clock size={16} />
+              <span>Samedi : 09h00 – 20h00</span>
+            </div>
           </div>
 
           <a
-            href="https://wa.me/221776913230?text=Bonjour%20Secret%20Beauty%20%26%20Spa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20soins%20et%20r%C3%A9server."
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#about"
             className="about-cta"
           >
-            <span>RÉSERVER VOTRE PARENTHÈSE</span>
+            <span>À PROPOS DE NOUS</span>
             <ArrowRight size={17} />
           </a>
-
-          <p className="about-note">
-            Prenez rendez-vous directement via WhatsApp.
-          </p>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface Service {
   image: string;
@@ -17,9 +17,9 @@ const ServicesSection: React.FC = () => {
 
   const cards: Service[] = [
     {
-      image: "/c3.jpg",
+      image: "/s.png",
       number: "01",
-      category: "DÉTENTE & RELAXATION",
+      category: "Détente & Relaxation",
       title: "Hammam & Massages",
       description:
         "Offrez-vous une parenthèse de sérénité avec nos massages relaxants, gommages au savon noir et rituels de bien-être.",
@@ -27,9 +27,9 @@ const ServicesSection: React.FC = () => {
         "Bonjour Secret Beauty & Spa, je souhaite réserver un hammam ou un massage.",
     },
     {
-      image: "/c44.jpg",
+      image: "/s3.png",
       number: "02",
-      category: "BEAUTÉ & SOIN DU CORPS",
+      category: "Beauté & Soin du corps",
       title: "Épilation & Laser",
       description:
         "Prenez soin de votre peau grâce à nos prestations d'épilation à la cire et à nos solutions adaptées à vos besoins.",
@@ -37,9 +37,9 @@ const ServicesSection: React.FC = () => {
         "Bonjour Secret Beauty & Spa, je souhaite avoir des informations sur vos prestations d'épilation et de laser.",
     },
     {
-      image: "/c5.jpg",
+      image: "/s4.png",
       number: "03",
-      category: "REGARD & MISE EN BEAUTÉ",
+      category: "Regard & Mise en beauté",
       title: "Regard & Maquillage",
       description:
         "Sublimez votre regard avec nos prestations dédiées aux cils et aux sourcils, ainsi que nos services de maquillage.",
@@ -56,10 +56,10 @@ const ServicesSection: React.FC = () => {
       <style>{`
         .services-section {
           width: 100%;
-          padding: 95px 24px 75px;
+          padding: 80px 24px 90px;
           box-sizing: border-box;
-          background: #fcf9f6;
-          color: #352720;
+          background: #ffffff;
+          color: #2b2b2b;
           font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -68,234 +68,193 @@ const ServicesSection: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* En-tête */
+        /* En-tête style image */
         .services-header {
-          max-width: 760px;
-          margin: 0 auto 52px;
           text-align: center;
+          margin-bottom: 50px;
         }
 
         .services-eyebrow {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
-          margin-bottom: 19px;
-          color: #a77965;
+          gap: 8px;
+          color: #7d6b63;
           font-size: 11px;
           font-weight: 700;
-          letter-spacing: 2.6px;
-          line-height: 1.6;
+          letter-spacing: 2.5px;
           text-transform: uppercase;
+          margin-bottom: 12px;
         }
 
-        .services-eyebrow svg {
-          color: #bd927d;
+        .services-eyebrow-line {
+          display: inline-block;
+          width: 3px;
+          height: 14px;
+          background-color: #ead5ca;
+          border-radius: 1px;
         }
 
         .services-heading {
           margin: 0;
-          color: #48352c;
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: clamp(34px, 4vw, 49px);
-          font-weight: 400;
+          color: #1a1a1a;
+          font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+          font-size: clamp(32px, 4vw, 44px);
+          font-weight: 600;
+          letter-spacing: -0.5px;
           line-height: 1.2;
-          letter-spacing: -0.8px;
-          text-wrap: balance;
-        }
-
-        .services-heading em {
-          color: #ae806b;
-          font-weight: 400;
         }
 
         .services-intro {
-          max-width: 580px;
-          margin: 19px auto 0;
-          color: #817168;
+          max-width: 600px;
+          margin: 16px auto 0;
+          color: #666666;
           font-size: 14px;
-          line-height: 1.9;
+          line-height: 1.7;
         }
 
-        .services-heading-line {
-          width: 48px;
-          height: 2px;
-          margin: 24px auto 0;
-          background: #c49b85;
-        }
-
-        /* Grille */
+        /* Grille des cartes */
         .services-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          align-items: stretch;
-          gap: 27px;
+          gap: 30px;
         }
 
-        /* Carte */
+        /* Carte de service style image */
         .service-card {
+          position: relative;
           display: flex;
           flex-direction: column;
-          min-width: 0;
-          overflow: hidden;
           background: #ffffff;
-          border: 1px solid #eee4dd;
-          border-radius: 5px;
-          box-shadow: 0 8px 28px rgba(63, 43, 32, 0.055);
-          transition:
-            transform 0.35s ease,
-            box-shadow 0.35s ease,
-            border-color 0.35s ease;
-          animation: service-fade-in 0.65s ease both;
-        }
-
-        .service-card:nth-child(2) {
-          animation-delay: 0.12s;
-        }
-
-        .service-card:nth-child(3) {
-          animation-delay: 0.24s;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .service-card:hover {
-          transform: translateY(-7px);
-          border-color: #ddc2b2;
-          box-shadow: 0 18px 38px rgba(63, 43, 32, 0.12);
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Image */
+        /* Conteneur d'image */
         .service-image-wrapper {
           position: relative;
           width: 100%;
-          height: 260px;
+          height: 380px;
           overflow: hidden;
-          background: #e8ddd5;
+          background-color: #f5f5f5;
         }
 
         .service-image {
-          display: block;
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: center;
-          transition: transform 0.65s ease;
+          transition: transform 0.5s ease;
         }
 
         .service-card:hover .service-image {
-          transform: scale(1.055);
+          transform: scale(1.04);
         }
 
-        .service-image-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(29, 20, 16, 0.02) 40%,
-            rgba(29, 20, 16, 0.48) 100%
-          );
-          pointer-events: none;
-        }
-
+        /* Numéro discret sur l'image */
         .service-number {
           position: absolute;
-          top: 16px;
-          left: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 40px;
-          height: 36px;
-          padding: 0 8px;
-          box-sizing: border-box;
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          background: rgba(48, 35, 31, 0.58);
-          color: #fffaf5;
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: 14px;
-          backdrop-filter: blur(8px);
-        }
-
-        .service-image-caption {
-          position: absolute;
-          right: 18px;
-          bottom: 17px;
-          left: 18px;
-          color: #fffaf5;
-          font-size: 9px;
+          top: 15px;
+          right: 15px;
+          background: rgba(255, 255, 255, 0.85);
+          color: #555555;
+          font-size: 11px;
           font-weight: 700;
-          letter-spacing: 1.8px;
-          line-height: 1.6;
-          text-transform: uppercase;
+          padding: 4px 8px;
+          letter-spacing: 1px;
+          backdrop-filter: blur(4px);
         }
 
-        /* Contenu */
-        .service-content {
+        /* Carte flottante superposition texte (exactement comme la maquette) */
+        .service-info-overlay {
+          position: relative;
+          margin-top: -70px;
+          margin-left: 0;
+          margin-right: 25px;
+          background: #ffffff;
+          padding: 20px 22px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+          z-index: 2;
           display: flex;
-          flex: 1;
-          flex-direction: column;
+          justify-content: space-between;
           align-items: stretch;
-          padding: 26px 23px 23px;
-          box-sizing: border-box;
+          border-right: 4px solid #ead5ca; /* Ligne verticale accentuée #ead5ca */
+        }
+
+        .service-info-content {
+          flex: 1;
+          padding-right: 10px;
         }
 
         .service-title {
-          margin: 0 0 13px;
-          color: #48352c;
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: 24px;
-          font-weight: 400;
+          margin: 0 0 4px;
+          color: #1a1a1a;
+          font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+          font-size: 20px;
+          font-weight: 600;
           line-height: 1.25;
         }
 
-        .service-description {
-          flex: 1;
-          margin: 0 0 25px;
-          color: #81746b;
-          font-size: 12px;
-          line-height: 1.9;
+        .service-category {
+          margin: 0;
+          color: #8c7b73;
+          font-size: 13px;
+          font-style: italic;
+          font-family: Georgia, serif;
         }
 
-        /* Bouton */
-        .service-button {
+        /* Contenu descriptif sous le bloc principal */
+        .service-body {
+          padding: 20px;
           display: flex;
+          flex-direction: column;
+          flex: 1;
+          background: #ffffff;
+        }
+
+        .service-description {
+          color: #666666;
+          font-size: 13px;
+          line-height: 1.7;
+          margin: 0 0 20px;
+          flex: 1;
+        }
+
+        /* Bouton de réservation WhatsApp */
+        .service-button {
+          display: inline-flex;
           align-items: center;
           justify-content: space-between;
-          gap: 15px;
           width: 100%;
-          min-height: 49px;
-          padding: 0 17px;
+          padding: 12px 18px;
           box-sizing: border-box;
-          border: 1px solid #684838;
-          background: #684838;
-          color: #ffffff;
-          font-size: 10px;
+          background-color: #ead5ca;
+          color: #4a3b34;
+          font-size: 11px;
           font-weight: 700;
-          letter-spacing: 1.5px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
           text-decoration: none;
-          transition:
-            background 0.25s ease,
-            color 0.25s ease,
-            border-color 0.25s ease;
-        }
-
-        .service-button svg {
-          flex-shrink: 0;
-          transition: transform 0.25s ease;
+          transition: all 0.25s ease;
+          border-radius: 2px;
         }
 
         .service-button:hover {
-          background: #f5ece6;
-          border-color: #c8a18c;
-          color: #684838;
+          background-color: #dfc3b5;
+          color: #2c201b;
+        }
+
+        .service-button svg {
+          transition: transform 0.25s ease;
         }
 
         .service-button:hover svg {
-          transform: translate(3px, -3px);
-        }
-
-        .service-button:focus-visible {
-          outline: 2px solid #a77965;
-          outline-offset: 4px;
+          transform: translate(2px, -2px);
         }
 
         /* Pied de section */
@@ -303,137 +262,50 @@ const ServicesSection: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-wrap: wrap;
-          gap: 9px;
-          margin-top: 37px;
-          color: #82736a;
-          font-size: 11px;
-          line-height: 1.8;
-          text-align: center;
+          gap: 12px;
+          margin-top: 50px;
+          color: #777777;
+          font-size: 12px;
         }
 
         .services-footer a {
-          color: #8e6551;
+          color: #4a3b34;
+          font-weight: 600;
           text-decoration: none;
-          overflow-wrap: anywhere;
         }
 
         .services-footer a:hover {
           text-decoration: underline;
         }
 
-        .services-footer-dot {
-          color: #bd927d;
-        }
-
-        @keyframes service-fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(18px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* Tablettes */
-        @media (max-width: 1024px) {
-          .services-section {
-            padding: 75px 25px 60px;
-          }
-
+        /* Adaptations mobiles & tablettes */
+        @media (max-width: 992px) {
           .services-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
+            gap: 25px;
           }
-
           .service-image-wrapper {
-            height: 245px;
-          }
-
-          .service-content {
-            padding: 23px 20px 21px;
+            height: 320px;
           }
         }
 
-        /* Mobiles */
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
           .services-section {
-            padding: 60px 18px 48px;
+            padding: 50px 16px 60px;
           }
-
-          .services-header {
-            margin-bottom: 34px;
-          }
-
-          .services-eyebrow {
-            margin-bottom: 15px;
-            font-size: 9px;
-            letter-spacing: 1.9px;
-          }
-
-          .services-heading {
-            font-size: 32px;
-            line-height: 1.23;
-          }
-
-          .services-intro {
-            margin-top: 15px;
-            font-size: 12px;
-            line-height: 1.8;
-          }
-
-          .services-heading-line {
-            margin-top: 20px;
-          }
-
           .services-grid {
-            grid-template-columns: minmax(0, 1fr);
-            gap: 22px;
-            max-width: 430px;
-            margin: 0 auto;
+            grid-template-columns: 1fr;
+            gap: 30px;
           }
-
           .service-image-wrapper {
-            height: 255px;
+            height: 300px;
           }
-
-          .service-content {
-            padding: 23px 21px 21px;
+          .service-info-overlay {
+            margin-right: 15px;
+            padding: 16px 18px;
           }
-
           .service-title {
-            font-size: 24px;
-          }
-
-          .service-description {
-            margin-bottom: 22px;
-            font-size: 12px;
-          }
-
-          .services-footer {
-            flex-direction: column;
-            gap: 5px;
-            margin-top: 28px;
-            font-size: 10px;
-          }
-
-          .services-footer-dot {
-            display: none;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .service-card {
-            animation: none;
-            transition: none;
-          }
-
-          .service-image,
-          .service-button,
-          .service-button svg {
-            transition: none;
+            font-size: 18px;
           }
         }
       `}</style>
@@ -443,26 +315,19 @@ const ServicesSection: React.FC = () => {
           {/* En-tête */}
           <header className="services-header">
             <div className="services-eyebrow">
-              <Sparkles size={15} strokeWidth={1.5} />
-              <span>Nos univers de beauté</span>
-              <Sparkles size={15} strokeWidth={1.5} />
+              <span className="services-eyebrow-line" />
+              <span>Nos Prestations</span>
             </div>
 
-            <h2 className="services-heading">
-              Laissez-vous séduire par{" "}
-              <em>l'art du bien-être.</em>
-            </h2>
+            <h2 className="services-heading">Secret Beauty & Spa</h2>
 
             <p className="services-intro">
-              Découvrez nos prestations pensées pour prendre soin de
-              vous, révéler votre beauté et vous offrir un véritable
-              moment d'évasion.
+              Découvrez nos soins d'exception conçus pour sublimer votre
+              beauté naturelle et vous offrir une expérience d'évasion unique.
             </p>
-
-            <div className="services-heading-line" />
           </header>
 
-          {/* Cartes des services */}
+          {/* Grille de cartes */}
           <div className="services-grid">
             {cards.map((card) => (
               <article className="service-card" key={card.number}>
@@ -473,53 +338,36 @@ const ServicesSection: React.FC = () => {
                     className="service-image"
                     loading="lazy"
                   />
-
-                  <div
-                    className="service-image-overlay"
-                    aria-hidden="true"
-                  />
-
-                  <span className="service-number">
-                    {card.number}
-                  </span>
-
-                  <span className="service-image-caption">
-                    {card.category}
-                  </span>
+                  
                 </div>
 
-                <div className="service-content">
-                  <h3 className="service-title">
-                    {card.title}
-                  </h3>
+                {/* Boîte flottante décalée avec bordure droite #ead5ca (Style image) */}
+                <div className="service-info-overlay">
+                  <div className="service-info-content">
+                    <h3 className="service-title">{card.title}</h3>
+                    <p className="service-category">{card.category}</p>
+                  </div>
+                </div>
 
-                  <p className="service-description">
-                    {card.description}
-                  </p>
+                <div className="service-body">
+                  
 
                   <a
                     href={getWhatsAppUrl(card.message)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="service-button"
-                    aria-label={`Réserver : ${card.title} sur WhatsApp`}
+                    aria-label={`Réserver ${card.title} sur WhatsApp`}
                   >
-                    <span>RÉSERVER CETTE PRESTATION</span>
-                    <ArrowUpRight size={18} strokeWidth={1.7} />
+                    <span>Decouvrir</span>
+                    <ArrowUpRight size={16} strokeWidth={2} />
                   </a>
                 </div>
               </article>
             ))}
           </div>
 
-          {/* Informations de contact */}
-          <footer className="services-footer">
-            <span>Prestations sur rendez-vous</span>
-            <span className="services-footer-dot">•</span>
-            <a href="mailto:secretbeautyspa136@gmail.com">
-              secretbeautyspa136@gmail.com
-            </a>
-          </footer>
+         
         </div>
       </section>
     </>

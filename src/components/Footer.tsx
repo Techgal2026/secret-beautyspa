@@ -5,7 +5,13 @@ import React from "react";
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = [
+  const whatsappLink =
+    "https://wa.me/221776913230?text=" +
+    encodeURIComponent(
+      "Bonjour Secret Beauty & Spa, je souhaite réserver une prestation ou obtenir des informations."
+    );
+
+  const navigationLinks = [
     { name: "À propos", href: "#about" },
     { name: "Nos prestations", href: "#services" },
     { name: "Nos tarifs", href: "#tarifs" },
@@ -13,75 +19,134 @@ const Footer: React.FC = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const whatsappLink =
-    "https://wa.me/221776913230?text=" +
-    encodeURIComponent(
-      "Bonjour Secret Beauty & Spa, je souhaite obtenir des informations sur vos prestations."
-    );
-
   const socialLinks = [
-    {
-      label: "Facebook",
-      href: "https://www.facebook.com/",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12Z" />
-        </svg>
-      ),
-    },
+    
     {
       label: "Instagram",
-      href: "https://www.instagram.com/",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.8" r="1" fill="currentColor" stroke="none" />
-        </svg>
-      ),
+  href: "https://www.instagram.com/secret_beauty__spa_?srtk=MWcwNzZwMG9sdzVocg==",
+  icon: (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  ),
     },
+   
   ];
 
   return (
-    <footer className="footer-section">
-      <div className="footer-overlay" />
+    <footer className="luxury-footer" id="footer">
+      <div className="footer-decoration" aria-hidden="true" />
 
       <div className="footer-container">
-        <div className="footer-main">
+        {/* Bandeau supérieur */}
+        <div className="footer-top">
+          <div className="footer-top-text">
+            <span className="footer-eyebrow">
+              VOTRE INSTANT DE BIEN-ÊTRE
+            </span>
+
+            <h2>
+              Prenez soin de vous.
+              <br />
+              <span>Vous le méritez.</span>
+            </h2>
+
+            <p>
+              Une parenthèse de douceur, de beauté et de sérénité,
+              imaginée spécialement pour vous.
+            </p>
+          </div>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-reservation"
+          >
+            <span>Réserver votre moment</span>
+
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 12h14M13 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div className="footer-separator">
+          <span />
+        </div>
+
+        {/* Colonnes principales */}
+        <div className="footer-grid">
           <div className="footer-brand">
-            <a href="/" className="footer-logo" aria-label="Secret Beauty & Spa, accueil">
-              Secret Beauty
-              <span>& Spa</span>
+            <a
+              href="/"
+              className="footer-logo"
+              aria-label="Secret Beauty & Spa - Accueil"
+            >
+              <img
+                src="/logoss.jpeg"
+                alt="Secret Beauty & Spa"
+                className="footer-logo-img"
+              />
             </a>
 
-            <div className="footer-tagline">
-              L&apos;art de prendre soin de soi.
+            <div className="footer-brand-title">
+              SECRET BEAUTY <span>&</span> SPA
             </div>
 
             <p className="footer-description">
-              Offrez à votre corps et à votre esprit un moment de détente,
-              de beauté et de bien-être dans un cadre pensé pour vous.
+              L’art de prendre soin de soi. Découvrez un univers où
+              beauté, relaxation et bien-être se rencontrent pour
+              vous offrir une expérience unique.
             </p>
 
-            <a
-              className="footer-whatsapp"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <div
+              className="footer-social-list"
+              aria-label="Nos réseaux sociaux"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.34.15 11.92c0 2.1.55 4.15 1.6 5.96L.05 24l6.28-1.65a11.9 11.9 0 0 0 5.74 1.46h.01C18.66 23.81 24 18.47 24 11.9c0-3.18-1.24-6.17-3.48-8.42ZM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.87 9.87 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.02 2.91a9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.93 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.28.3-1.05 1.02-1.05 2.49s1.08 2.88 1.23 3.08c.15.2 2.13 3.25 5.16 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z" />
-              </svg>
-              <span>Prendre rendez-vous</span>
-            </a>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  title={social.label}
+                  className="footer-social-icon"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="footer-column">
             <h3>Navigation</h3>
-            <nav className="footer-nav" aria-label="Navigation de pied de page">
-              {footerLinks.map((link) => (
+            <span className="footer-heading-line" />
+
+            <nav
+              className="footer-nav"
+              aria-label="Navigation de pied de page"
+            >
+              {navigationLinks.map((link) => (
                 <a key={link.name} href={link.href}>
-                  <span className="footer-link-arrow">↗</span>
+                  
                   {link.name}
                 </a>
               ))}
@@ -89,94 +154,159 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="footer-column footer-contact">
-            <h3>Restons en contact</h3>
+            <h3>Contactez-nous</h3>
+            <span className="footer-heading-line" />
 
             <a href="tel:+221776913230" className="footer-contact-item">
-              <span className="footer-contact-icon">☎</span>
-              <span>
-                <small>Téléphone / WhatsApp</small>
-                +221 77 691 32 30
-              </span>
-            </a>
+  <span className="footer-contact-icon">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-8-8l3-2-2-5Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+
+  <span className="footer-contact-content">
+    <small>Téléphone / WhatsApp</small>
+    <strong>+221 77 691 32 30</strong>
+  </span>
+</a>
+
+<a href="tel:+221338210404" className="footer-contact-item">
+  <span className="footer-contact-icon">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-8-8l3-2-2-5Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+
+  <span className="footer-contact-content">
+    <small>Téléphone fixe</small>
+    <strong>+221 33 821 04 04</strong>
+  </span>
+</a>
 
             <a
               href="mailto:secretbeautyspa136@gmail.com"
               className="footer-contact-item"
             >
-              <span className="footer-contact-icon">✉</span>
-              <span>
+              <span className="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                  />
+                  <path
+                    d="m4 7 8 6 8-6"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span className="footer-contact-content">
                 <small>Adresse e-mail</small>
-                secretbeautyspa136@gmail.com
+                <strong>secretbeautyspa136@gmail.com</strong>
               </span>
             </a>
 
-            <div className="footer-socials">
-              <span className="footer-social-label">Suivez-nous</span>
-              <div className="footer-social-list">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    title={social.label}
-                    className="footer-social-icon"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-whatsapp-link"
+            >
+              <span className="footer-status-dot" />
+              Disponible pour vos réservations
+            </a>
           </div>
         </div>
 
-        <div className="footer-divider" />
-
+        {/* Bas de page */}
         <div className="footer-bottom">
           <p>
-            © {currentYear} <strong>Secret Beauty & Spa</strong>. Tous droits
-            réservés.
+            © {currentYear} <strong>Secret Beauty & Spa</strong>.
+            Tous droits réservés.
           </p>
 
-          <div className="footer-legal">
-            <a href="/politique-confidentialite">
-              Politique de confidentialité
-            </a>
-          </div>
+          <a
+            href="/politique-confidentialite"
+            className="footer-privacy"
+          >
+            Politique de confidentialité
+          </a>
 
           <a href="#top" className="footer-back-top">
-            Retour en haut ↑
+            Retour en haut <span>↑</span>
           </a>
         </div>
       </div>
 
       <style jsx>{`
-        .footer-section {
+        .luxury-footer {
+          --footer-bg: #ead5ca;
+          --footer-text: #35231d;
+          --footer-muted: #715b50;
+          --footer-gold: #956b4f;
+          --footer-border: rgba(53, 35, 29, 0.18);
+
           position: relative;
           isolation: isolate;
           overflow: hidden;
           width: 100%;
-          padding: 76px 24px 24px;
-          box-sizing: border-box;
-          color: #fffaf6;
-          background-color: #211815;
-          background-image: url("/footer.png");
-          background-position: center;
-          background-size: cover;
+          padding: 0 24px;
+          background: var(--footer-bg);
+          color: var(--footer-text);
           font-family: Arial, Helvetica, sans-serif;
+          box-sizing: border-box;
         }
 
-        .footer-overlay {
+        .luxury-footer *,
+        .luxury-footer *::before,
+        .luxury-footer *::after {
+          box-sizing: border-box;
+        }
+
+        /* Décoration discrète */
+        .footer-decoration {
           position: absolute;
-          inset: 0;
+          top: -180px;
+          right: -140px;
           z-index: -1;
-          background: linear-gradient(
-            110deg,
-            rgba(28, 19, 16, 0.97),
-            rgba(40, 27, 22, 0.92) 55%,
-            rgba(28, 19, 16, 0.96)
-          );
+          width: 430px;
+          height: 430px;
+          border: 1px solid rgba(149, 107, 79, 0.17);
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .footer-decoration::before,
+        .footer-decoration::after {
+          position: absolute;
+          content: "";
+          border: 1px solid rgba(149, 107, 79, 0.13);
+          border-radius: 50%;
+          inset: 25px;
+        }
+
+        .footer-decoration::after {
+          inset: 55px;
         }
 
         .footer-container {
@@ -185,285 +315,476 @@ const Footer: React.FC = () => {
           margin: 0 auto;
         }
 
-        .footer-main {
-          display: grid;
-          grid-template-columns: 1.4fr 0.75fr 1fr;
-          gap: 64px;
-          padding-bottom: 54px;
+        /* Bandeau supérieur */
+        .footer-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 35px;
+          padding: 66px 0 54px;
         }
 
-        .footer-brand {
-          max-width: 390px;
-        }
-
-        .footer-logo {
+        .footer-eyebrow {
           display: inline-block;
-          color: #fffaf6;
+          margin-bottom: 17px;
+          color: var(--footer-gold);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 3px;
+        }
+
+        .footer-top h2 {
+          margin: 0;
+          color: var(--footer-text);
           font-family: var(--font-playfair), Georgia, serif;
-          font-size: clamp(28px, 3vw, 36px);
+          font-size: clamp(30px, 4vw, 43px);
           font-weight: 400;
+          line-height: 1.25;
           letter-spacing: -0.8px;
-          line-height: 1.2;
-          text-decoration: none;
         }
 
-        .footer-logo span {
-          display: block;
-          margin-top: 3px;
-          color: #c8a18e;
-          font-size: 0.72em;
-          font-style: italic;
-          letter-spacing: 2px;
-        }
-
-        .footer-tagline {
-          margin-top: 22px;
-          color: #d8b9a8;
-          font-family: var(--font-playfair), Georgia, serif;
-          font-size: 18px;
+        .footer-top h2 span {
+          color: var(--footer-gold);
           font-style: italic;
         }
 
-        .footer-description {
-          margin: 15px 0 25px;
-          max-width: 350px;
-          color: rgba(255, 250, 246, 0.7);
-          font-size: 14px;
+        .footer-top-text > p {
+          max-width: 480px;
+          margin: 15px 0 0;
+          color: var(--footer-muted);
+          font-size: 13px;
           line-height: 1.9;
         }
 
-        .footer-whatsapp {
+        /* Bouton de réservation */
+        .footer-reservation {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
-          min-height: 46px;
-          padding: 0 20px;
-          border: 1px solid #b88e7d;
-          border-radius: 3px;
-          background: #b88e7d;
-          color: #241814;
-          font-size: 13px;
+          gap: 20px;
+          min-height: 54px;
+          padding: 0 23px;
+          border: 1px solid var(--footer-text);
+          background: var(--footer-text);
+          color: var(--footer-bg);
+          font-size: 12px;
           font-weight: 600;
           text-decoration: none;
+          white-space: nowrap;
           transition:
             background 0.25s ease,
+            border-color 0.25s ease,
             color 0.25s ease,
             transform 0.25s ease;
         }
 
-        .footer-whatsapp svg {
-          width: 19px;
-          height: 19px;
-          flex-shrink: 0;
+        .footer-reservation svg {
+          width: 18px;
+          height: 18px;
+          transition: transform 0.25s ease;
         }
 
-        .footer-whatsapp:hover {
-          transform: translateY(-2px);
-          background: transparent;
-          color: #f0d5c6;
+        .footer-reservation:hover {
+          transform: translateY(-3px);
+          border-color: var(--footer-gold);
+          background: var(--footer-gold);
+          color: #ffffff;
         }
 
-        .footer-column h3 {
-          margin: 7px 0 25px;
-          color: #e3c3b1;
-          font-family: var(--font-playfair), Georgia, serif;
-          font-size: 20px;
-          font-weight: 400;
+        .footer-reservation:hover svg {
+          transform: translateX(4px);
         }
 
-        .footer-nav {
-          display: flex;
-          flex-direction: column;
-          gap: 17px;
+        .footer-separator {
+          position: relative;
+          height: 1px;
+          background: var(--footer-border);
         }
 
-        .footer-nav a {
-          display: flex;
-          align-items: center;
-          gap: 9px;
-          width: fit-content;
-          color: rgba(255, 250, 246, 0.76);
-          font-size: 14px;
-          text-decoration: none;
-          transition: color 0.2s ease;
+        .footer-separator span {
+          position: absolute;
+          top: -3px;
+          left: 0;
+          width: 46px;
+          height: 5px;
+          background: var(--footer-gold);
         }
 
-        .footer-link-arrow {
-          color: #b88e7d;
-          font-size: 13px;
-          transition: transform 0.2s ease;
+        /* Grille principale */
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.35fr 0.72fr 1.15fr;
+          gap: 72px;
+          padding: 54px 0 55px;
         }
 
-        .footer-nav a:hover,
-        .footer-legal a:hover,
-        .footer-back-top:hover {
-          color: #e5bfa9;
-        }
-
-        .footer-nav a:hover .footer-link-arrow {
-          transform: translate(2px, -2px);
-        }
-
-        .footer-contact {
+        .footer-brand {
           min-width: 0;
+          max-width: 390px;
         }
 
-        .footer-contact-item {
-          display: flex;
+        .footer-logo {
+          display: inline-flex;
           align-items: center;
-          gap: 13px;
-          margin-bottom: 20px;
-          color: #fffaf6;
-          font-size: 13px;
           text-decoration: none;
-          overflow-wrap: anywhere;
         }
 
-        .footer-contact-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 39px;
-          height: 39px;
-          flex-shrink: 0;
-          border: 1px solid rgba(200, 161, 142, 0.4);
-          border-radius: 50%;
-          color: #d5ad99;
-          font-size: 17px;
-        }
-
-        .footer-contact-item small {
+        .footer-logo-img {
           display: block;
-          margin-bottom: 6px;
-          color: rgba(255, 250, 246, 0.55);
-          font-size: 11px;
+          width: auto;
+          max-width: 190px;
+          height: 65px;
+          object-fit: contain;
+          object-position: left center;
         }
 
-        .footer-socials {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 15px;
-          margin-top: 25px;
+        .footer-brand-title {
+          margin-top: 15px;
+          color: var(--footer-text);
+          font-family: var(--font-playfair), Georgia, serif;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 2px;
         }
 
-        .footer-social-label {
-          color: rgba(255, 250, 246, 0.7);
+        .footer-brand-title span {
+          color: var(--footer-gold);
+          font-style: italic;
+        }
+
+        .footer-description {
+          max-width: 340px;
+          margin: 16px 0 25px;
+          color: var(--footer-muted);
           font-size: 12px;
+          line-height: 2;
         }
 
+        /* Réseaux sociaux */
         .footer-social-list {
           display: flex;
+          flex-wrap: wrap;
           gap: 10px;
         }
 
         .footer-social-icon {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
-          border: 1px solid rgba(255, 250, 246, 0.22);
+          width: 39px;
+          height: 39px;
+          border: 1px solid rgba(53, 35, 29, 0.25);
           border-radius: 50%;
-          color: #fffaf6;
+          color: var(--footer-text);
+          text-decoration: none;
           transition:
-            background 0.2s ease,
-            color 0.2s ease,
-            border-color 0.2s ease;
+            transform 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
         }
 
         .footer-social-icon svg {
           width: 17px;
           height: 17px;
           stroke: currentColor;
-          stroke-width: 1.7;
+          stroke-width: 1.6;
           stroke-linecap: round;
           stroke-linejoin: round;
         }
 
         .footer-social-icon:hover {
-          border-color: #c8a18e;
-          background: #c8a18e;
-          color: #241814;
+          transform: translateY(-3px);
+          border-color: var(--footer-text);
+          background: var(--footer-text);
+          color: var(--footer-bg);
         }
 
-        .footer-divider {
-          height: 1px;
-          background: rgba(255, 250, 246, 0.15);
+        /* Navigation et titres */
+        .footer-column {
+          min-width: 0;
+          padding-top: 9px;
         }
 
-        .footer-bottom {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 18px;
-          padding-top: 23px;
-          color: rgba(255, 250, 246, 0.57);
-          font-size: 12px;
-        }
-
-        .footer-bottom p {
+        .footer-column h3 {
           margin: 0;
-          line-height: 1.7;
-        }
-
-        .footer-bottom strong {
-          color: rgba(255, 250, 246, 0.85);
+          color: var(--footer-text);
+          font-family: var(--font-playfair), Georgia, serif;
+          font-size: 20px;
           font-weight: 500;
         }
 
-        .footer-legal a,
-        .footer-back-top {
-          color: rgba(255, 250, 246, 0.65);
+        .footer-heading-line {
+          display: block;
+          width: 33px;
+          height: 2px;
+          margin: 16px 0 24px;
+          background: var(--footer-gold);
+        }
+
+        .footer-nav {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 17px;
+        }
+
+        .footer-nav a {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--footer-muted);
+          font-size: 12px;
+          line-height: 1.6;
+          text-decoration: none;
+          transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .footer-nav-arrow {
+          color: var(--footer-gold);
+          font-size: 13px;
+          transition: transform 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+          transform: translateX(3px);
+          color: var(--footer-text);
+        }
+
+        .footer-nav a:hover .footer-nav-arrow {
+          transform: translate(2px, -2px);
+        }
+
+        /* Coordonnées */
+        .footer-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          margin-bottom: 21px;
+          color: var(--footer-text);
+          text-decoration: none;
+        }
+
+        .footer-contact-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: 0 0 43px;
+          width: 43px;
+          height: 43px;
+          border: 1px solid rgba(53, 35, 29, 0.22);
+          border-radius: 50%;
+          color: var(--footer-gold);
+          transition:
+            background 0.2s ease,
+            color 0.2s ease;
+        }
+
+        .footer-contact-icon svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .footer-contact-item:hover .footer-contact-icon {
+          background: var(--footer-gold);
+          color: #ffffff;
+        }
+
+        .footer-contact-content {
+          display: block;
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+
+        .footer-contact-content small {
+          display: block;
+          margin-bottom: 6px;
+          color: var(--footer-muted);
+          font-size: 10px;
+        }
+
+        .footer-contact-content strong {
+          display: block;
+          color: var(--footer-text);
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 1.7;
+        }
+
+        .footer-whatsapp-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          margin-top: 1px;
+          color: var(--footer-muted);
+          font-size: 10px;
           text-decoration: none;
           transition: color 0.2s ease;
         }
 
+        .footer-whatsapp-link:hover {
+          color: var(--footer-text);
+        }
+
+        .footer-status-dot {
+          width: 7px;
+          height: 7px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: #638a60;
+          box-shadow: 0 0 0 4px rgba(99, 138, 96, 0.1);
+        }
+
+        /* Bas de page */
+        .footer-bottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 18px 25px;
+          padding: 23px 0;
+          border-top: 1px solid var(--footer-border);
+          color: var(--footer-muted);
+          font-size: 10px;
+        }
+
+        .footer-bottom p {
+          margin: 0;
+          line-height: 1.8;
+        }
+
+        .footer-bottom strong {
+          color: var(--footer-text);
+          font-weight: 600;
+        }
+
+        .footer-privacy,
         .footer-back-top {
+          color: var(--footer-muted);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .footer-privacy:hover,
+        .footer-back-top:hover {
+          color: var(--footer-gold);
+        }
+
+        .footer-back-top {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
           white-space: nowrap;
         }
 
+        .footer-back-top span {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 25px;
+          height: 25px;
+          border: 1px solid rgba(53, 35, 29, 0.22);
+          border-radius: 50%;
+          color: var(--footer-gold);
+          transition:
+            background 0.2s ease,
+            color 0.2s ease;
+        }
+
+        .footer-back-top:hover span {
+          background: var(--footer-gold);
+          color: #ffffff;
+        }
+
+        .luxury-footer a:focus-visible {
+          outline: 2px solid var(--footer-gold);
+          outline-offset: 4px;
+        }
+
+        /* Tablettes */
         @media (max-width: 950px) {
-          .footer-main {
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 45px 55px;
+          .footer-grid {
+            grid-template-columns: 1.1fr 0.8fr;
+            gap: 48px 45px;
           }
 
           .footer-contact {
             grid-column: 1 / -1;
           }
 
-          .footer-bottom {
-            flex-wrap: wrap;
+          .footer-contact-item {
+            max-width: 390px;
           }
         }
 
+        /* Mobiles */
         @media (max-width: 600px) {
-          .footer-section {
-            padding: 48px 20px 22px;
+          .luxury-footer {
+            padding: 0 21px;
           }
 
-          .footer-main {
-            grid-template-columns: 1fr;
-            gap: 38px;
-            padding-bottom: 35px;
+          .footer-decoration {
+            top: -100px;
+            right: -280px;
+          }
+
+          .footer-top {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 27px;
+            padding: 45px 0 36px;
+          }
+
+          .footer-eyebrow {
+            font-size: 9px;
+            letter-spacing: 2px;
+          }
+
+          .footer-top h2 {
+            font-size: 32px;
+          }
+
+          .footer-top-text > p {
+            font-size: 12px;
+          }
+
+          .footer-reservation {
+            width: 100%;
+            min-height: 52px;
+            justify-content: space-between;
+          }
+
+          .footer-grid {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 37px;
+            padding: 38px 0;
           }
 
           .footer-brand {
             max-width: 100%;
           }
 
+          .footer-logo-img {
+            height: 58px;
+            max-width: 180px;
+          }
+
           .footer-description {
             max-width: 100%;
           }
 
-          .footer-column h3 {
-            margin-bottom: 19px;
+          .footer-column {
+            padding-top: 0;
           }
 
-          .footer-nav {
-            gap: 15px;
+          .footer-column h3 {
+            font-size: 21px;
+          }
+
+          .footer-heading-line {
+            margin: 13px 0 20px;
           }
 
           .footer-contact {
@@ -471,25 +792,20 @@ const Footer: React.FC = () => {
           }
 
           .footer-bottom {
-            flex-direction: column;
             align-items: flex-start;
-            gap: 14px;
-            padding-top: 20px;
-          }
-
-          .footer-legal {
-            order: 2;
-          }
-
-          .footer-back-top {
-            order: 3;
+            flex-direction: column;
+            gap: 15px;
+            padding: 22px 0;
           }
         }
 
+        /* Accessibilité */
         @media (prefers-reduced-motion: reduce) {
-          .footer-section *,
-          .footer-section *::before,
-          .footer-section *::after {
+          .luxury-footer *,
+          .luxury-footer *::before,
+          .luxury-footer *::after {
+            scroll-behavior: auto !important;
+            animation: none !important;
             transition: none !important;
           }
         }

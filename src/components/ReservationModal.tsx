@@ -141,6 +141,7 @@ export default function ReservationModal({
   const [selectedServices, setSelectedServices] = useState<ServiceItem[]>([]);
 
   const MERCHANT_WHATSAPP_PHONE = "221776913230";
+  const WAVE_MERCHANT_PHONE = "221786346377";
 
   useEffect(() => {
     if (isOpen) {
@@ -254,6 +255,23 @@ export default function ReservationModal({
       encodeURIComponent(message);
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const handleWavePayment = () => {
+    if (!clientName.trim() || !clientPhone.trim()) {
+      alert("Veuillez d'abord renseigner votre nom et votre numéro de téléphone.");
+      return;
+    }
+
+    if (selectedServices.length === 0) {
+      alert("Veuillez sélectionner au moins un soin avant de régler par Wave.");
+      return;
+    }
+
+    const total = calculateTotal();
+    const waveUrl = `https://wave.com/send?phone=${WAVE_MERCHANT_PHONE}&amount=${total}`;
+
+    window.open(waveUrl, "_blank", "noopener,noreferrer");
   };
 
   const availableServices = allAvailableServices.filter(
@@ -514,41 +532,64 @@ export default function ReservationModal({
             </p>
           </div>
 
-          {/* Bouton de réservation */}
-          <button type="submit" style={styles.whatsappButton}>
-            <span style={styles.whatsappIcon}>
-              <svg
-                width="23"
-                height="23"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.5-4.7A8.5 8.5 0 1 1 20.5 11.7Z"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.3 8.1c.3-.5.6-.5.9-.5h.4c.2 0 .4.1.5.5l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.2.2-.1.4 0 .6.5.8 1.2 1.5 2.1 2 .2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .5-.2 1-.6 1.3-.5.4-1.1.6-1.7.5-1.1-.2-2.3-.8-3.5-1.8-1.4-1.2-2.3-2.7-2.5-3.7-.2-.8.1-1.5.6-1.9Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-
-            <span style={styles.buttonText}>
-              <strong style={styles.buttonTitle}>
-                Réserver sur WhatsApp
-              </strong>
-              <span style={styles.buttonSubtitle}>
-                Échangez avec notre équipe
+          {/* Boutons d'action */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {/* Bouton de réservation WhatsApp */}
+            <button type="submit" style={styles.whatsappButton}>
+              <span style={styles.whatsappIcon}>
+                <svg
+                  width="23"
+                  height="23"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.5-4.7A8.5 8.5 0 1 1 20.5 11.7Z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8.3 8.1c.3-.5.6-.5.9-.5h.4c.2 0 .4.1.5.5l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.2.2-.1.4 0 .6.5.8 1.2 1.5 2.1 2 .2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .5-.2 1-.6 1.3-.5.4-1.1.6-1.7.5-1.1-.2-2.3-.8-3.5-1.8-1.4-1.2-2.3-2.7-2.5-3.7-.2-.8.1-1.5.6-1.9Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </span>
-            </span>
 
-            <span style={styles.buttonArrow}>↗</span>
-          </button>
+              <span style={styles.buttonText}>
+                <strong style={styles.buttonTitle}>
+                  Réserver sur WhatsApp
+                </strong>
+                <span style={styles.buttonSubtitle}>
+                  Échangez avec notre équipe
+                </span>
+              </span>
+
+              <span style={styles.buttonArrow}>↗</span>
+            </button>
+
+            {/* Bouton Payer avec Wave */}
+            <button
+              type="button"
+              onClick={handleWavePayment}
+              style={styles.waveButton}
+            >
+              <span style={styles.waveIcon}>🌊</span>
+
+              <span style={styles.buttonText}>
+                <strong style={styles.buttonTitle}>
+                  Payer avec Wave
+                </strong>
+                <span style={styles.buttonSubtitle}>
+                  Règlement direct (78 634 63 77)
+                </span>
+              </span>
+
+              <span style={styles.buttonArrow}>↗</span>
+            </button>
+          </div>
 
           <div style={styles.trustNote}>
             <span style={styles.trustIcon}>♡</span>
@@ -1072,7 +1113,7 @@ const styles: { [key: string]: React.CSSProperties } = {
 
   whatsappButton: {
     width: "100%",
-    minHeight: "63px",
+    minHeight: "55px",
     padding: "11px 15px",
     display: "flex",
     alignItems: "center",
@@ -1086,6 +1127,32 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxShadow: "0 7px 18px rgba(88, 59, 42, .2)",
     transition: "transform .2s, box-shadow .2s",
     fontFamily: "inherit",
+  },
+
+  waveButton: {
+    width: "100%",
+    minHeight: "55px",
+    padding: "11px 15px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "12px",
+    border: "none",
+    borderRadius: "10px",
+    background: "linear-gradient(135deg, #1DC8F3, #0083B0)",
+    color: "#FFFFFF",
+    cursor: "pointer",
+    boxShadow: "0 5px 15px rgba(29, 200, 243, 0.3)",
+    transition: "transform .2s, box-shadow .2s",
+    fontFamily: "inherit",
+  },
+
+  waveIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    fontSize: "20px",
   },
 
   whatsappIcon: {

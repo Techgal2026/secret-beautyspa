@@ -22,8 +22,9 @@ export default function Home() {
       
       <Hero />
       <About />
-      <Why />
       <Collection />
+      <Why />
+      
       <Tesmonials />
       <Footer />
 
