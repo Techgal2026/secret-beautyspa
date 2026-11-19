@@ -2,10 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
-import Link from 'next/link';
+import Link from "next/link";
 import {
-  Search,
   Menu,
   X,
   ChevronDown,
@@ -20,11 +18,7 @@ interface NavLink {
   hasDropdown?: boolean;
 }
 
-interface NavbarProps {
-  onOpenReservation?: () => void;
-}
-
-const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
+const Nav: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
@@ -33,8 +27,8 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
 
   const navLinks: NavLink[] = [
     { name: "ACCUEIL", href: "/", active: true },
-    { name: "À PROPOS", href: "about" },
-    { name: "SOINS", href: "soins", hasDropdown: true },
+    { name: "À PROPOS", href: "/about" },
+    { name: "SOINS", href: "/soins", hasDropdown: true },
   ];
 
   useEffect(() => {
@@ -52,14 +46,6 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
       document.body.style.overflow = "unset";
     }
   }, [isMobileMenuOpen]);
-
-  const handleReservationClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false); // Ferme le menu mobile si ouvert
-    if (onOpenReservation) {
-      onOpenReservation();
-    }
-  };
 
   return (
     <>
@@ -81,13 +67,13 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
 
         @media (max-width: 576px) {
           .nav-wrapper-custom { padding: 8px 10px !important; }
-          .nav-container-custom { padding: 10px 15px !important; }
+          .nav-container-custom { padding: 10px 14px !important; }
           .phone-text-desktop { display: none !important; }
           .phone-button-custom { padding: 8px 10px !important; border-radius: 50% !important; }
-          .logo-brand-text { font-size: 16px !important; }
-          .logo-subtext-text { font-size: 8px !important; }
-          .btn-reserve-text { display: none; }
-          .btn-reserve-custom { padding: 8px 12px !important; }
+          .logo-brand-text { font-size: 15px !important; }
+          .logo-subtext-text { font-size: 7.5px !important; }
+          .btn-reserve-text { display: inline !important; font-size: 11px !important; }
+          .btn-reserve-custom { padding: 8px 11px !important; gap: 5px !important; }
         }
 
         .nav-link-hover { position: relative; }
@@ -108,32 +94,32 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
           }}
         >
           {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-  <div style={styles.logoContainer}>
-    <Image
-      src="/logoss.jpeg"
-      alt="Secret Beauty & Spa"
-      width={48}
-      height={48}
-      style={styles.logoImage}
-      priority
-    />
-    <div style={styles.logoTextContainer}>
-      <span className="logo-brand-text" style={styles.logoBrand}>
-        Secret Beauty & Spa
-      </span>
-      <span className="logo-subtext-text" style={styles.logoSubtext}>
-        DU SOIN AU BESOIN
-      </span>
-    </div>
-  </div>
-</Link>
+          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <div style={styles.logoContainer}>
+              <Image
+                src="/logoss.jpeg"
+                alt="Secret Beauty & Spa"
+                width={48}
+                height={48}
+                style={styles.logoImage}
+                priority
+              />
+              <div style={styles.logoTextContainer}>
+                <span className="logo-brand-text" style={styles.logoBrand}>
+                  Secret Beauty & Spa
+                </span>
+                <span className="logo-subtext-text" style={styles.logoSubtext}>
+                  DU SOIN AU BESOIN
+                </span>
+              </div>
+            </div>
+          </Link>
 
           {/* Navigation Desktop */}
           <ul className="nav-desktop-list" style={styles.navList}>
             {navLinks.map((link, index) => (
               <li key={index} style={styles.navItem}>
-                <a
+                <Link
                   href={link.href}
                   className="nav-link-hover"
                   style={{
@@ -145,26 +131,22 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
                   {link.hasDropdown && (
                     <ChevronDown size={14} style={styles.dropdownIcon} />
                   )}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           {/* Boutons d'action */}
           <div style={styles.iconGroup}>
-            
-
-            {/* Bouton Réserver bureau */}
-            <button
-              onClick={handleReservationClick}
+            {/* Bouton Réserver -> redirection vers /reservation */}
+            <Link
+              href="/reservation"
               className="btn-reserve-custom"
               style={styles.reserveButton}
             >
               <Calendar size={15} color="#ffffff" />
               <span className="btn-reserve-text">RÉSERVER</span>
-            </button>
-
-          
+            </Link>
 
             <button
               className="mobile-toggle-btn"
@@ -217,7 +199,7 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
         <ul style={styles.mobileNavList}>
           {navLinks.map((link, index) => (
             <li key={index} style={styles.mobileNavItem}>
-              <a
+              <Link
                 href={link.href}
                 style={{
                   ...styles.mobileNavLink,
@@ -227,21 +209,21 @@ const Nav: React.FC<NavbarProps> = ({ onOpenReservation }) => {
               >
                 {link.name}
                 {link.hasDropdown && <ChevronDown size={16} />}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         <div style={styles.mobileActionContainer}>
-          {/* Bouton Réserver mobile */}
-          <button
-            onClick={handleReservationClick}
-            className="btn-reserve-custom"
+          {/* Bouton Réserver mobile -> redirection vers /reservation */}
+          <Link
+            href="/reservation"
             style={styles.mobileReserveButton}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             <Calendar size={16} color="#ffffff" />
-            <span>Réserver un soin</span>
-          </button>
+            <span>Réserver</span>
+          </Link>
 
           <a href={`tel:${phoneNumber}`} style={styles.mobilePhoneButton}>
             <Phone size={16} color="#ffffff" />
@@ -364,8 +346,9 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   iconGroup: {
     display: "flex",
-    gap: "10px",
+    gap: "8px",
     alignItems: "center",
+    flexShrink: 0,
   },
   phoneButton: {
     display: "flex",
@@ -397,6 +380,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontWeight: "600",
     letterSpacing: "0.5px",
     textDecoration: "none",
+    whiteSpace: "nowrap",
     transition: "background-color 0.3s ease",
   },
   iconButton: {
@@ -408,6 +392,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "50%",
+    flexShrink: 0,
   },
   mobileOverlay: {
     position: "fixed",

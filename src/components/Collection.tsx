@@ -1,6 +1,8 @@
+
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 interface Service {
@@ -9,47 +11,39 @@ interface Service {
   category: string;
   title: string;
   description: string;
-  message: string;
+  href: string;
 }
 
 const ServicesSection: React.FC = () => {
-  const phoneNumber = "221776913230";
-
   const cards: Service[] = [
     {
-      image: "/s.png",
+      image: "/s6.jpeg",
       number: "01",
       category: "Détente & Relaxation",
       title: "Hammam & Massages",
       description:
         "Offrez-vous une parenthèse de sérénité avec nos massages relaxants, gommages au savon noir et rituels de bien-être.",
-      message:
-        "Bonjour Secret Beauty & Spa, je souhaite réserver un hammam ou un massage.",
+      href: "/soins/hammam-massages",
     },
     {
-      image: "/s3.png",
+      image: "/s8.jpeg",
       number: "02",
       category: "Beauté & Soin du corps",
       title: "Épilation & Laser",
       description:
         "Prenez soin de votre peau grâce à nos prestations d'épilation à la cire et à nos solutions adaptées à vos besoins.",
-      message:
-        "Bonjour Secret Beauty & Spa, je souhaite avoir des informations sur vos prestations d'épilation et de laser.",
+      href: "/soins/epilation-laser",
     },
     {
-      image: "/s4.png",
+      image: "/s7.jpeg",
       number: "03",
       category: "Regard & Mise en beauté",
       title: "Regard & Maquillage",
       description:
         "Sublimez votre regard avec nos prestations dédiées aux cils et aux sourcils, ainsi que nos services de maquillage.",
-      message:
-        "Bonjour Secret Beauty & Spa, je souhaite réserver une prestation regard ou maquillage.",
+      href: "/soins/regard-maquillage",
     },
   ];
-
-  const getWhatsAppUrl = (message: string) =>
-    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
     <>
@@ -68,7 +62,7 @@ const ServicesSection: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* En-tête style image */
+        /* En-tête */
         .services-header {
           text-align: center;
           margin-bottom: 50px;
@@ -120,7 +114,7 @@ const ServicesSection: React.FC = () => {
           gap: 30px;
         }
 
-        /* Carte de service style image */
+        /* Carte */
         .service-card {
           position: relative;
           display: flex;
@@ -135,7 +129,7 @@ const ServicesSection: React.FC = () => {
           box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Conteneur d'image */
+        /* Image */
         .service-image-wrapper {
           position: relative;
           width: 100%;
@@ -156,7 +150,7 @@ const ServicesSection: React.FC = () => {
           transform: scale(1.04);
         }
 
-        /* Numéro discret sur l'image */
+        /* Numéro */
         .service-number {
           position: absolute;
           top: 15px;
@@ -170,7 +164,7 @@ const ServicesSection: React.FC = () => {
           backdrop-filter: blur(4px);
         }
 
-        /* Carte flottante superposition texte (exactement comme la maquette) */
+        /* Bloc flottant */
         .service-info-overlay {
           position: relative;
           margin-top: -70px;
@@ -183,7 +177,7 @@ const ServicesSection: React.FC = () => {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
-          border-right: 4px solid #ead5ca; /* Ligne verticale accentuée #ead5ca */
+          border-right: 4px solid #ead5ca;
         }
 
         .service-info-content {
@@ -208,7 +202,7 @@ const ServicesSection: React.FC = () => {
           font-family: Georgia, serif;
         }
 
-        /* Contenu descriptif sous le bloc principal */
+        /* Description et bouton */
         .service-body {
           padding: 20px;
           display: flex;
@@ -225,7 +219,7 @@ const ServicesSection: React.FC = () => {
           flex: 1;
         }
 
-        /* Bouton de réservation WhatsApp */
+        /* Bouton Découvrir */
         .service-button {
           display: inline-flex;
           align-items: center;
@@ -257,33 +251,13 @@ const ServicesSection: React.FC = () => {
           transform: translate(2px, -2px);
         }
 
-        /* Pied de section */
-        .services-footer {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          margin-top: 50px;
-          color: #777777;
-          font-size: 12px;
-        }
-
-        .services-footer a {
-          color: #4a3b34;
-          font-weight: 600;
-          text-decoration: none;
-        }
-
-        .services-footer a:hover {
-          text-decoration: underline;
-        }
-
-        /* Adaptations mobiles & tablettes */
+        /* Responsive */
         @media (max-width: 992px) {
           .services-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 25px;
           }
+
           .service-image-wrapper {
             height: 320px;
           }
@@ -293,17 +267,21 @@ const ServicesSection: React.FC = () => {
           .services-section {
             padding: 50px 16px 60px;
           }
+
           .services-grid {
             grid-template-columns: 1fr;
             gap: 30px;
           }
+
           .service-image-wrapper {
             height: 300px;
           }
+
           .service-info-overlay {
             margin-right: 15px;
             padding: 16px 18px;
           }
+
           .service-title {
             font-size: 18px;
           }
@@ -312,6 +290,7 @@ const ServicesSection: React.FC = () => {
 
       <section className="services-section" id="services">
         <div className="services-inner">
+
           {/* En-tête */}
           <header className="services-header">
             <div className="services-eyebrow">
@@ -319,7 +298,9 @@ const ServicesSection: React.FC = () => {
               <span>Nos Prestations</span>
             </div>
 
-            <h2 className="services-heading">Secret Beauty & Spa</h2>
+            <h2 className="services-heading">
+              Secret Beauty & Spa
+            </h2>
 
             <p className="services-intro">
               Découvrez nos soins d'exception conçus pour sublimer votre
@@ -327,10 +308,12 @@ const ServicesSection: React.FC = () => {
             </p>
           </header>
 
-          {/* Grille de cartes */}
+          {/* Grille des cartes */}
           <div className="services-grid">
             {cards.map((card) => (
               <article className="service-card" key={card.number}>
+
+                {/* Image */}
                 <div className="service-image-wrapper">
                   <img
                     src={card.image}
@@ -338,36 +321,45 @@ const ServicesSection: React.FC = () => {
                     className="service-image"
                     loading="lazy"
                   />
-                  
+
+                  <span className="service-number">
+                    {card.number}
+                  </span>
                 </div>
 
-                {/* Boîte flottante décalée avec bordure droite #ead5ca (Style image) */}
+                {/* Informations */}
                 <div className="service-info-overlay">
                   <div className="service-info-content">
-                    <h3 className="service-title">{card.title}</h3>
-                    <p className="service-category">{card.category}</p>
+                    <h3 className="service-title">
+                      {card.title}
+                    </h3>
+
+                    <p className="service-category">
+                      {card.category}
+                    </p>
                   </div>
                 </div>
 
+                {/* Description et navigation */}
                 <div className="service-body">
-                  
+                  <p className="service-description">
+                    {card.description}
+                  </p>
 
-                  <a
-                    href={getWhatsAppUrl(card.message)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={card.href}
                     className="service-button"
-                    aria-label={`Réserver ${card.title} sur WhatsApp`}
+                    aria-label={`Découvrir ${card.title}`}
                   >
-                    <span>Decouvrir</span>
+                    <span>Découvrir</span>
                     <ArrowUpRight size={16} strokeWidth={2} />
-                  </a>
+                  </Link>
                 </div>
+
               </article>
             ))}
           </div>
 
-         
         </div>
       </section>
     </>

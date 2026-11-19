@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
           {/* Nom & Poste */}
           <div className="mb-8">
             <h4 className="text-sm font-medium text-[#2b2320] tracking-wide">
-              Bernard Dubois
+              Mr Diop
             </h4>
             <p className="text-xs text-gray-500 mt-0.5">
               Client

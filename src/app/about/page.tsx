@@ -87,17 +87,17 @@ export default function AboutPage() {
           {/* COLONNE GAUCHE : PHOTOS */}
           <div className={`about-left-column animate-fade-up delay-1 ${isVisible ? "visible" : ""}`} style={styles.leftColumn}>
             <div className="main-image-wrapper" style={styles.mainImageWrapper}>
-              <img src="/abb.jpg" alt="Cadre apaisant de l'institut" style={styles.mainImage} loading="lazy" />
+              <img src="/a2.jpg" alt="Cadre apaisant de l'institut" style={styles.mainImage} loading="lazy" />
             </div>
             <div className="overlay-image-card" style={styles.overlayImageCard}>
-              <img src="/ab2.jpeg" alt="Détails des soins Secret Beauty" style={styles.overlayImage} loading="lazy" />
+              <img src="/a3.jpg" alt="Détails des soins Secret Beauty" style={styles.overlayImage} loading="lazy" />
             </div>
           </div>
 
           {/* COLONNE DROITE : L'HISTOIRE DU SPA */}
           <div className={`about-right-column animate-fade-up delay-2 ${isVisible ? "visible" : ""}`} style={styles.rightColumn}>
             <div style={styles.brandBadge}>
-              <img src="/logo.png" alt="Secret Beauty Logo" style={styles.inlineLogo} />
+              
               <span style={styles.subtitle}>À propos de Secret Beauty &amp; Spa</span>
             </div>
 

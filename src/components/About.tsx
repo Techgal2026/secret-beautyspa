@@ -300,7 +300,7 @@ const About: React.FC = () => {
         <div className="about-visual">
           <div className="about-image-back">
             <img
-              src="/about.jpeg"
+              src="/a.jpg"
               alt="Décor et accessoires de spa - Secret Beauty & Spa"
               loading="lazy"
             />
