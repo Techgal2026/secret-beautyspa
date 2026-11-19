@@ -193,7 +193,7 @@ export default function SpaBeautyMenuPage() {
 
   return (
     <>
-      <Navbar onOpenReservation={() => handleOpenModal()} />
+      <Navbar  />
 
       <section style={styles.section}>
         <style>{`

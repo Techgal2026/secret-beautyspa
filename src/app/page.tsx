@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div>
       {/* ⚠️ C'est cette ligne qui connecte le bouton de la Navbar au modal */}
-      <Navbar onOpenReservation={() => setIsModalOpen(true)} />
+      <Navbar />
       
       <Hero />
       <About />
